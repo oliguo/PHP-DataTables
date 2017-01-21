@@ -12,7 +12,7 @@ require 'ssp.class.php';
 
 $sql = "select demo_1.* from demo_1 join demo_2"
       ." on demo_1.demo_1_id=demo_2.demo_1_id "
-      ."where demo_1.id in("
+      ."where demo_1.demo_1_id in("
       ."select demo_3.demo_1_id from demo_3 "
       ."where demo_3.name in('a','b','c')"
       .")";
