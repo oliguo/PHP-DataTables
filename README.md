@@ -6,7 +6,7 @@ Change ssp.class.php from <b>Tables plug-in for jQuery http://www.datatables.net
 To support sub sql query on <b>server_processing.php</b>
 
 server_processing.php below:
-<pre>
+```php
 <?php
 require 'ssp.class.php';
 
@@ -17,6 +17,11 @@ $sql = "select demo_1.* from demo_1 join demo_2"
       ."where demo_3.name in('a','b','c')"
       .")";
 $table = '(' . $sql . ') Demos';
+
+//ordering
+$_GET['order']=[
+  ['column'=>'demo_1_name','dir'=>'desc']  
+];
 
 // Table's primary key
 $primaryKey = 'demo_1_id';
@@ -36,6 +41,7 @@ $columns = array(
     array('db' => 'demo_1_name', 'dt' => 1)
 );
 
+
 // SQL server connection information
 
 $sql_details = array(
@@ -49,3 +55,5 @@ $sql_details = array(
 echo json_encode(
         SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
 );
+
+```
