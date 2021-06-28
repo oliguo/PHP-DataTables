@@ -19,9 +19,13 @@ $sql = "select demo_1.* from demo_1 join demo_2"
 $table = '(' . $sql . ') Demos';
 
 //ordering
-$_GET['order']=[
-  ['column'=>'demo_1_name','dir'=>'desc']  
-];
+if (isset($_GET['order'])) {
+    if ($_GET['order'][0]['column'] == 0) {
+        $_GET['order'] = [
+            ['column' => 'date', 'dir' => 'desc']
+        ];
+    }
+}
 
 // Table's primary key
 $primaryKey = 'demo_1_id';
